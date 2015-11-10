@@ -1,0 +1,39 @@
+---
+title: "Tidy Data"
+author: "Lin Chen"
+date: "November 10, 2015"
+output: html_document
+---
+
+```{r}
+library(tidyr)
+library(dplyr)
+library(ggplot2)
+library(lubridate)
+library(RCurl)
+```
+
+
+3.
+```{r}
+movie.select <- select(movies, title, r1:r10, Action:Short)
+
+movie.rating <- select(movie.select, title, r1:r10)
+movie.select.2 <- movie.rating %>% gather(rating, frequency, r1:r10) %>% arrange(title)
+
+movie.genre <- select(movie.select, title, Action:Short)
+movie3 <- movie.genre %>% gather(genre, frequency, Action:Short) %>% arrange(title) %>% filter(frequency == 1)
+```
+
+4.
+
+
+```{r}
+url <- getURL("https://raw.githubusercontent.com/shv38339/statcomp597d/master/data/cafedata.csv")
+cafedat<- read.csv(file = textConnection(url), header = TRUE)
+untidy <- cafedat %>% arrange(Total.Items.Wasted)
+untidy$date.day.of.week <- paste(untidy$Day.Code, untidy$Day.of.Week, sep = " ")
+```
+
+First, the data could be arranged by the descending order of total items wasted by day of the week. Then, untidying the data by putting the day code and day of week together.
+
