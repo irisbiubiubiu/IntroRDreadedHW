@@ -1,2 +1,15 @@
 # IntroRDreadedHW
-What do you  mean by informative?
+
+
+I
+N
+F
+O
+R
+M
+A
+T
+I
+V
+E
+
